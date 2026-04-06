@@ -40,8 +40,7 @@ NGINX can limit requests per user to prevent abuse and protect your API.
 
 ## 🧩 Basic NGINX Configuration
 
----
-
+```
 events {}
 
 http {
@@ -58,7 +57,7 @@ http {
         }
     }
 }
-
+```
 ---
 
 ## 🐳 Docker Setup
