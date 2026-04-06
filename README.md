@@ -20,9 +20,9 @@ NGINX can serve static files such as:
 
 
 ---
-User → NGINX → Static files
 
 ### 2. 🔁 Reverse Proxy
+User → NGINX → Static files
 NGINX sits in front of your backend (e.g., Node.js API) and forwards requests.
 
 **Example flow:**# nginx
