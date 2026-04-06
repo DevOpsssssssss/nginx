@@ -6,7 +6,7 @@ NGINX is a high-performance HTTP server and reverse proxy designed to handle lar
 ---
 
 ## 🧩 Minimal Working Configuration
-
+```
 events {}
 
 http {
@@ -23,7 +23,7 @@ http {
         }
     }
 }
-
+```
 ---
 
 ## 🔍 Line-by-Line Explanation
@@ -130,6 +130,8 @@ User → NGINX → API
 ---
 
 ### 🚦 4. Add rate limiting
+```
+
 
 limit_req_zone $binary_remote_addr zone=api_limit:10m rate=100r/m;
 
@@ -138,6 +140,7 @@ server {
         limit_req zone=api_limit burst=20 nodelay;
     }
 }
+```
 
 ---
 
@@ -161,6 +164,7 @@ gzip_types text/plain application/json text/css application/javascript;
 ---
 
 ### ✅ Basic Reverse Proxy
+```
 
 server {
     listen 80;
@@ -169,10 +173,12 @@ server {
         proxy_pass http://localhost:4000;
     }
 }
+```
 
 ---
 
 ### ✅ API + Static Files
+```
 
 server {
     listen 80;
@@ -186,10 +192,12 @@ server {
         index index.html;
     }
 }
+```
 
 ---
 
 ### ✅ Load Balancing
+```
 
 http {
     upstream backend {
@@ -205,19 +213,23 @@ http {
         }
     }
 }
+```
 
 ---
 
 ### ✅ HTTPS Redirect
+```
 
 server {
     listen 80;
     return 301 https://$host$request_uri;
 }
+```
 
 ---
 
 ### ✅ HTTPS Server
+```
 
 server {
     listen 443 ssl;
@@ -229,6 +241,7 @@ server {
         proxy_pass http://localhost:4000;
     }
 }
+```
 
 ---
 
